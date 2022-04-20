@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AD340Form</string>
+    <string name="submit_button">submit</string>
+    <string name="return_main">return</string>
+    <string name="initials">Chau, Jeffrey 3/19/2022</string>
+    <string name="first_name">Please Input first name</string>
+    <string name="last_name">Please Input last name</string>
+    <string name="email">Please Input email</string>
+</resources>
