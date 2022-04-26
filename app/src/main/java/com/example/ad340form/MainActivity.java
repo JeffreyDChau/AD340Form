@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button WelcomeScreenButton;
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     String lastName;
     EditText emailField;
     String email;
+    EditText birthdateField;
+    String birthdate;
 
 
     @Override
@@ -31,17 +36,16 @@ public class MainActivity extends AppCompatActivity {
         firstNameField = findViewById(R.id.firstName);
         lastNameField = findViewById(R.id.lastName);
         emailField = findViewById(R.id.email);
-
+        birthdateField = findViewById(R.id.birthdate);
         WelcomeScreenButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                firstName=firstNameField.getText().toString();
                lastName=lastNameField.getText().toString();
                email=emailField.getText().toString();
-
-
-               if (firstName.equals("") || lastName.equals("") || email.equals("")) {
-                   // empty strings are not valid form input show a Toast to the user
+               birthdate = birthdateField.getText().toString();
+               String[] date = birthdate.split("/");
+               if (firstName.equals("") || lastName.equals("") || email.equals("") || birthdate.equals("")) {
                    Toast.makeText(getApplicationContext(), getString(R.string.null_error),
                            Toast.LENGTH_LONG).show();
                    return;
@@ -51,7 +55,23 @@ public class MainActivity extends AppCompatActivity {
                            Toast.LENGTH_LONG).show();
                    return;
                }
+               if(date.length !=3 || birthdate.length() !=10){
+                   Toast.makeText(getApplicationContext(), getString(R.string.date_error),
+                           Toast.LENGTH_LONG).show();
+                   return;
+               }
 
+               int month = Integer.parseInt(date[0]);
+               int day = Integer.parseInt(date[1]);
+               int year = Integer.parseInt(date[2]);
+               LocalDate currentDate = LocalDate.now();
+               LocalDate dateOfBirth = LocalDate.of(year,month,day);
+               int years = Period.between(dateOfBirth, currentDate).getYears();
+               if (years < 18) {
+                   Toast.makeText(getApplicationContext(), getString(R.string.eighteen_error),
+                           Toast.LENGTH_LONG).show();
+                   return;
+               }
 
                Intent intent  = new Intent(MainActivity.this , WelcomeActivity.class);
                intent.putExtra( "firstName_KEY", firstName);
