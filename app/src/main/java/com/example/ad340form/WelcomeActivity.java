@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
         firstname=getIntent().getExtras().getString("firstName_KEY");
         lastname=getIntent().getExtras().getString("lastName_KEY");
         email=getIntent().getExtras().getString("email_KEY");
-        welcomeMessage.setText("Thanks for Signing Up " + firstname + lastname);
+        welcomeMessage.setText("Thanks for Signing Up " + firstname +" "+ lastname);
     }
     public void onBackClick(View view) {
         finish();

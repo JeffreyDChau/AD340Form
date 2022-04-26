@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     String email;
     EditText birthdateField;
     String birthdate;
+    int month =0;
+    int day = 0;
+    int year =0;
 
 
     @Override
@@ -60,15 +64,27 @@ public class MainActivity extends AppCompatActivity {
                            Toast.LENGTH_LONG).show();
                    return;
                }
-
-               int month = Integer.parseInt(date[0]);
-               int day = Integer.parseInt(date[1]);
-               int year = Integer.parseInt(date[2]);
+               try {
+                    month = Integer.parseInt(date[0]);
+                    day = Integer.parseInt(date[1]);
+                    year = Integer.parseInt(date[2]);
+               } catch (NumberFormatException e){
+                   Toast.makeText(getApplicationContext(), getString(R.string.date_error),
+                           Toast.LENGTH_LONG).show();
+                   return;
+               }
+               if(0<month && month<=12 && 0<day && day<=31){
                LocalDate currentDate = LocalDate.now();
                LocalDate dateOfBirth = LocalDate.of(year,month,day);
-               int years = Period.between(dateOfBirth, currentDate).getYears();
-               if (years < 18) {
-                   Toast.makeText(getApplicationContext(), getString(R.string.eighteen_error),
+
+                   int years = Period.between(dateOfBirth, currentDate).getYears();
+                   if (years < 18) {
+                       Toast.makeText(getApplicationContext(), getString(R.string.eighteen_error),
+                               Toast.LENGTH_LONG).show();
+                       return;
+                   }
+               }else{
+                   Toast.makeText(getApplicationContext(), getString(R.string.valid_date_error),
                            Toast.LENGTH_LONG).show();
                    return;
                }
