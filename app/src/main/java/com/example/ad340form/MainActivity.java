@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,10 +37,17 @@ public class MainActivity extends AppCompatActivity {
                firstName=firstNameField.getText().toString();
                lastName=lastNameField.getText().toString();
                email=emailField.getText().toString();
+
+               if (firstName.equals("") || lastName.equals("") || email.equals("")) {
+                   // empty strings are not valid form input show a Toast to the user
+                   Toast.makeText(getApplicationContext(), getString(R.string.null_error),
+                           Toast.LENGTH_LONG).show();
+                   return;
+               }
                Intent intent  = new Intent(MainActivity.this , WelcomeActivity.class);
-               intent.putExtra( "firstName", firstName);
-               intent.putExtra( "lastName", lastName);
-               intent.putExtra( "email", email);
+               intent.putExtra( "firstName_KEY", firstName);
+               intent.putExtra( "lastName_KEY", lastName);
+               intent.putExtra( "email_KEY", email);
                startActivity(intent);
            }
        });

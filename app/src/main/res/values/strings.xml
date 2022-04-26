@@ -6,4 +6,11 @@
     <string name="first_name">Please Input first name</string>
     <string name="last_name">Please Input last name</string>
     <string name="email">Please Input email</string>
+    <string name="birthdate">mm/dd/yyyy</string>
+    <string name="null_error">Missing information</string>
+    <string name="email_address_error">email not formatted correctly</string>
+    <string name="select_your_date_of_birth">Select your Date of Birth</string>
+    <string name="eighteen_error">Need to be 18 or older</string>
+    <string name="date">%1$d/%2$d/%3$d</string>
+    <string name="date_error">date is not formatted correctly</string>
 </resources>

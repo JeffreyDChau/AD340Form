@@ -13,6 +13,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
     TextView welcomeMessage;
     String firstname;
+    String lastname;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +22,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
         welcomeMessage=findViewById(R.id.welcome_message);
 
-        firstname=getIntent().getExtras().getString("firstName");
-        welcomeMessage.setText("Thanks for Signing Up " + firstname);
+        firstname=getIntent().getExtras().getString("firstName_KEY");
+        lastname=getIntent().getExtras().getString("lastName_KEY");
+        email=getIntent().getExtras().getString("email_KEY");
+        welcomeMessage.setText("Thanks for Signing Up " + firstname + lastname);
+    }
+    public void onBackClick(View view) {
+        finish();
     }
 
 
