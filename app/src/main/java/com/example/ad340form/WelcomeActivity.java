@@ -22,9 +22,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
         welcomeMessage=findViewById(R.id.welcome_message);
 
-        firstname=getIntent().getExtras().getString("firstName_KEY");
-        lastname=getIntent().getExtras().getString("lastName_KEY");
-        email=getIntent().getExtras().getString("email_KEY");
+        firstname=getIntent().getExtras().getString(Constants.firstname_KEY);
+        lastname=getIntent().getExtras().getString(Constants.lastname_KEY);
+        email=getIntent().getExtras().getString(Constants.email_KEY);
         welcomeMessage.setText("Thanks for Signing Up " + firstname +" "+ lastname);
     }
     public void onBackClick(View view) {

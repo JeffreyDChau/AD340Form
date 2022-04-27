@@ -14,4 +14,5 @@
     <string name="date">%1$d/%2$d/%3$d</string>
     <string name="date_error">date is not formatted correctly</string>
     <string name="valid_date_error">Not a valid date</string>
+    <string name="welcome_value">Thanks for Signing Up</string>
 </resources>

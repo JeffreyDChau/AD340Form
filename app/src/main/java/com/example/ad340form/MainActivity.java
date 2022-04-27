@@ -17,17 +17,17 @@ import java.time.Period;
 public class MainActivity extends AppCompatActivity {
 
     private Button WelcomeScreenButton;
-    EditText firstNameField;
-    String firstName;
-    EditText lastNameField;
-    String lastName;
-    EditText emailField;
-    String email;
-    EditText birthdateField;
-    String birthdate;
-    int month =0;
-    int day = 0;
-    int year =0;
+    private EditText firstNameField;
+    private String firstName;
+    private EditText lastNameField;
+    private String lastName;
+    private EditText emailField;
+    private String email;
+    private EditText birthdateField;
+    private String birthdate;
+    private int month =0;
+    private int day = 0;
+    private int year =0;
 
 
     @Override
@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
                }
 
                Intent intent  = new Intent(MainActivity.this , WelcomeActivity.class);
-               intent.putExtra( "firstName_KEY", firstName);
-               intent.putExtra( "lastName_KEY", lastName);
-               intent.putExtra( "email_KEY", email);
+               intent.putExtra( Constants.firstname_KEY, firstName);
+               intent.putExtra( Constants.lastname_KEY, lastName);
+               intent.putExtra( Constants.email_KEY, email);
                startActivity(intent);
            }
        });
